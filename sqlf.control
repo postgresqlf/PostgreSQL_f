@@ -1,0 +1,6 @@
+#SQLf extension
+comment = 'Relational database system working with flexible queries'
+default_version = '1.0'
+module_pathname = '$libdir/sqlf'
+relocatable = true
+

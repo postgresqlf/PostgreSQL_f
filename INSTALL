@@ -1,0 +1,70 @@
+SQLf : extension de postgreSQL au traitement de requêtes flexibles
+==================================================================
+
+Equipe IRISA/PILGRIM (http://www.irisa.fr/pilgrim/home_html)
+
+Contributions scientifiques :
+  Olivier Pivert (olivier.pivert AT irisa.fr)
+
+Supervision du projet
+  Gregory Smits (gregory.smits AT irisa.fr)
+
+Auteur du code source :
+  Thomas Girault (toma.girault AT gmail.com),
+
+Version de PostgreSQL supportée
+--------------------------------
+
+Cette extension a été testée avec PostgreSQL 9.1.x et GCC 4.6.1 sur Linux (Debian et ArchLinux).
+
+Installation
+------------
+
+L'extension SQLf doit être installée sur un serveur PostgreSQL existant (version 9.1 minimum car l'outil repose sur l'outil de construction PGXS).
+
+Pour commencer une base de données doit être créée dans PostgreSQL.
+L'extension fait usage de fonctions écrites dans les langages PL/PgSQL et PL/Python qui peuvent être installés de la manière suivante
+
+  createlang plpgsql <dbname>
+  createlang plpythonu <dbname>
+
+Il d'abord faut décompresser l'archive téléchargée :
+  $ tar xzf sqlf--x.y/
+
+La construction de l'extension nécessite ensuite une étape de compilation :
+
+  $ cd sqlf--x.y/
+  $ make
+
+    cat sql/sqlf_predicates.sql sql/sqlf_settings.sql sql/sqlf_operators.sql sql/sqlf_conversion.sql sql/sqlf_quantifiers.sql sql/sqlf_gradual.sql > sqlf--1.0.sql
+    gcc -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wformat-security -fno-strict-aliasing -fwrapv -fpic -I. -I. -I/usr/include/postgresql/server -I/usr/include/postgresql/internal -D_GNU_SOURCE -I/usr/include/libxml2   -c -o sqlf.o sqlf.c
+    gcc -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wformat-security -fno-strict-aliasing -fwrapv -fpic -L/usr/lib -Wl,-O1,--sort-common,--as-needed,-z,relro,--hash-style=gnu  -Wl,--as-needed -Wl,-rpath,'/usr/lib',--enable-new-dtags  -shared -o sqlf.so sqlf.o
+    rm sqlf.o
+
+L'extension doit ensuite être installée en copiant la libraire compilée (sqlf.so), et les fichier sqlf--x.y.sql et sqlf.control :
+
+  # make install
+
+  /bin/mkdir -p '/usr/share/postgresql/extension'
+  /bin/mkdir -p '/usr/lib/postgresql'
+  /bin/sh /usr/lib/postgresql/pgxs/src/makefiles/../../config/install-sh -c -m 644 ./sqlf.control '/usr/share/postgresql/extension/'
+  /bin/sh /usr/lib/postgresql/pgxs/src/makefiles/../../config/install-sh -c -m 644 ./sqlf--1.0.sql  '/usr/share/postgresql/extension/'
+  /bin/sh /usr/lib/postgresql/pgxs/src/makefiles/../../config/install-sh -c -m 755  sqlf.so '/usr/lib/postgresql/'
+
+
+L'instruction 'CREATE EXTENSION sqlf;' permet de charger l'extension sqlf lors d'une connexion à une base de données :
+
+  $ su postgre
+  $ psql <dbname> -f 'CREATE EXTENSION sqlf;'
+
+Cette commande va charger la librairie sqlf.so ainsi que l'ensemble du fichier sqlf--x.y.sql.
+L'extension est alors opérationnelle et l'ensemble de ses fonctionnalités doivent être utilisables.
+
+
+Désinstallation
+---------------
+
+Pour supprimer l'extension et ses fonctions d'une base de données, on peut faitre appel au script de desinstallation sqlf_uninstall.sql :
+
+  psql -f sql/sqlf_uninstall.sql <dbname>
+

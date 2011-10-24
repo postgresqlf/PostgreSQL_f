@@ -1,0 +1,260 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: annoncesauto; Type: TABLE; Schema: public; Owner: pilgrim; Tablespace: 
+--
+
+CREATE TABLE annoncesauto (
+    idads integer,
+    type text,
+    designation text,
+    price integer,
+    mileage integer,
+    year integer,
+    make text,
+    name text,
+    namecomp text,
+    model text,
+    length integer,
+    width smallint,
+    height smallint,
+    nbdoors smallint,
+    nbseats smallint,
+    acceleration numeric,
+    consumption numeric,
+    co2emission smallint,
+    originalprice smallint,
+    iddb smallint DEFAULT 1
+);
+
+
+--ALTER TABLE public.annoncesauto_medium OWNER TO pilgrim;
+
+--
+-- Data for Name: annoncesauto_medium; Type: TABLE DATA; Schema: public; Owner: pilgrim
+--
+
+COPY annoncesauto (idads, type, designation, price, mileage, year, make, name, namecomp, model, length, width, height, nbdoors, nbseats, acceleration, consumption, co2emission, originalprice, iddb) FROM stdin WITH DELIMITER ';';
+265391;particulier;opel meriva;10500;33300;2005;OPEL;Meriva 1.6i;Ecotec Enjoy;MERIVA;4042;1950;1624;5;5;13.3;7.3;175;0;4
+265407;particulier;308 berline;16300;17500;2008;PEUGEOT;308 1.6 VTi 120ch;Premium;308;4276;1815;1498;3;5;12.7;6.7;159;0;1
+265423;professionnel;toyota yaris (2) 85 vvti linea terra 5p;5800;58594;2004;TOYOTA;Yaris Verso 85 VVT-i;Linéa Terra;YARIS VERSO;3880;1690;1715;5;5;12.7;6.4;154;0;6
+265480;particulier;mini cooper park lane;12900;55000;2006;MINI;Mini 1.6i - 170;Cooper S Park Lane;MINI;3655;1688;1416;3;4;9.1;8.6;207;0;1
+265518;particulier;406 coupe 2.0l 16s;4000;168000;2000;PEUGEOT;406 Coupé 2.0i;;406 COUPE;4615;1780;1352;2;4;10.4;8.3;197;0;3
+265529;professionnel;peugeot 807 2.2 navteq;10490;92058;2005;PEUGEOT;807 2.2 16V;Navteq on Board;807;4727;1850;1752;5;5;11.6;9.7;231;0;5
+265539;particulier;bmw 118d 143ch 3 portes;18800;40000;2008;BMW;Touring 318i 143ch;Luxe;SERIE 3;4520;1817;1418;5;5;9.5;6.0;144;0;4
+265546;particulier;206 xs;4000;123358;2001;PEUGEOT;206 1.4i;XS;206;3835;1652;1432;3;5;15.2;6.6;162;0;6
+265551;particulier;jaguar x-type 2.0 d 2004 130cv;10000;148000;2004;JAGUAR;X-Type 2.0i V6;Classique;X-TYPE;4672;2003;1392;4;5;9.4;9.2;219;0;2
+265558;particulier;206 xbox noire serie limitee 27000 km (1ère main);10000;27000;2008;PEUGEOT;206 1.4e 75ch;XBOX 360;206;3835;1652;1432;3;5;12.5;6.4;152;0;6
+265566;particulier;206 s16;5500;72000;2001;PEUGEOT;206 2.0e 16V;S16;206;3835;1652;1432;3;5;8.4;7.9;187;0;5
+265570;particulier;av 406 coupé 2.0 pack;6200;132000;1999;PEUGEOT;406 Coupé 2.0i;Pack;406 COUPE;4615;1780;1352;2;4;10.4;8.3;197;0;2
+265582;professionnel;porsche 997 carrera 4s bv6 3,8 l 2 p - 43500 kms;65000;43500;2006;PORSCHE;911 Carrera 4S Coupé 3.8i;;911 TYPE 997;4427;1852;1310;2;2;4.9;11.8;285;0;1
+265608;particulier;c4 coupe;17000;10500;2004;CITROEN;C4 Coupé 2.0i 16V 138;VTS;C4;4274;1773;1458;3;5;12.8;7.8;186;0;1
+265625;professionnel;peugeot 307 16 v confort pack 1,4 l 3 p - 60359 km;9890;60359;2006;PEUGEOT;307 1.6e 16V;Confort Pack;307;4218;1757;1510;3;5;10.7;7.4;174;0;5
+265627;particulier;clio 3 rs siruis;16500;41556;2007;RENAULT;Clio TCE 100;Initiale;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;5
+265642;particulier;c4 picasso collection 110ch;20800;9000;2009;CITROEN;C4 Picasso VTi 120;Collection;C4;4470;1830;1660;5;5;11.1;7.5;177;0;4
+265654;particulier;renault mégane 2 carminat;12500;26000;2008;RENAULT;Mégane II Coupé 2.0T 16V;F1 Team 2;MÉGANE II;4228;1777;1437;3;5;6.5;8.5;200;0;1
+265656;particulier;clio 3;12500;29000;2007;RENAULT;Clio TCE 100;Initiale;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;3
+265662;particulier;espace 3 rte;4500;251000;1999;RENAULT;Grand Espace 2.0i 16V;RTE;GRAND ESPACE;4787;1810;1700;5;7;13.7;9.7;227;0;3
+265671;particulier;peugeot 2006 xbox;8500;45000;2007;PEUGEOT;206 1.4e 75ch;XBOX 360;206;3835;1652;1432;3;5;12.5;6.4;152;0;6
+265682;particulier;bmw x5 ph2 2004 3.0d 218cv pack luxe/sport;17400;166000;2004;BMW;X5 3.0i;Pack Luxe;X5;4667;1872;1715;5;5;8.3;12.7;307;0;5
+265688;particulier;microcar mc city s;7500;17000;2008;TOYOTA;Corolla Verso MC 110 VVT-i 5pl;Limited Edition;COROLLA VERSO;4360;1770;1620;5;5;12.7;7.5;178;0;2
+265701;particulier;107;9500;33000;2007;PEUGEOT;107 1.0e 12v;Urban Move;107;3430;1630;1470;5;4;13.7;4.6;109;0;5
+265709;particulier;polo 1.2 match 2005;6800;60500;2005;VOLKSWAGEN;Polo 1.2 - 65;Match;POLO 2002-;3897;1650;1465;5;5;14.9;5.9;142;0;5
+265718;particulier;audi tt 1.8 turbo quattro 225cv;10900;149500;2000;AUDI;TT 1.8T;Quattro;TT;4041;1856;1349;3;4;6.8;9.5;228;0;4
+265726;particulier;renault scenic ii latitude;10500;76500;2006;RENAULT;Scenic 1.6 16V Euro 4;Latitude;SCENIC II;4259;2087;1620;5;5;12.5;7.2;173;0;4
+265744;particulier;twingo kenzo 1.2 16v clim;4500;90000;2005;RENAULT;Twingo 1.2 16v;Kenzo;TWINGO;3433;1630;1423;3;4;11.7;5.8;138;0;4
+265755;particulier;citroen xsara accidenté;470;100000;1999;CITROEN;Xsara Break 1.4i;X;XSARA;4354;1698;1420;5;5;14.6;6.9;170;0;4
+265759;particulier;audi a4 2.4 v6;8800;145000;2002;AUDI;A4 Avant 2.4 V6;Pack Plus;A4 AVANT;4544;1937;1428;5;5;9.0;9.6;230;0;5
+265760;particulier;clio rs 200 chx;14500;29000;2007;RENAULT;Clio TCE 100;Initiale;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;4
+265766;professionnel;c4 1.6 16v bioflex pack ambiance;13500;16188;2008;CITROEN;C4 Coupé 1.6i 16V 110;Pack Ambiance;C4;4274;1773;1458;5;5;10.6;7.1;169;0;2
+265770;particulier;peugeot 308 1.6 vti premium essence 3 porte;14500;24500;2008;PEUGEOT;308 1.6 VTi 120ch;Premium Pack;308;4276;1815;1498;5;5;10.8;6.7;159;0;2
+265781;particulier;opel astra gtc sport;10000;80000;2005;OPEL;Astra GTC 1.6 Twinport;Sport;ASTRA;4290;1794;1435;3;5;12.3;6.6;158;0;5
+265782;particulier;suzuki grand vitara 1l9 d luxe;17700;59000;2007;SUZUKI;GRAND VITARA 2.0;LUXE;GRAND VITARA;4470;1810;1695;5;2;12.5;9.1;208;0;4
+265792;particulier;pt cruiser pack crom;9500;119000;2004;CHRYSLER;PT Cruiser 2.4 Turbo;Touring;PT CRUISER;4288;1748;1601;5;5;11.1;10.0;237;0;3
+265797;particulier;bmw serie 1;21000;22000;2008;BMW;125i 218 ch;Confort;SERIE 1;4360;1748;1423;2;4;6.4;7.9;190;0;2
+265812;particulier;polo match;3500;107000;2001;VOLKSWAGEN;Polo 1.4i;Match;POLO 2000-;3743;1632;1418;5;5;14.5;6.1;146;0;1
+265821;particulier;nissan 350z pack noir 300cv gtie avril2010 16000km;27500;16000;2007;NISSAN;350Z;Pack;350Z;4315;1815;1325;2;4;5.8;11.7;280;0;5
+265826;particulier;peugeot 206 s16 noire - 03/2002 - 4990 euros -;4990;129000;2002;PEUGEOT;206 SW 2.0i 16V;S16;206;4028;1652;1460;5;5;9.9;7.9;189;0;5
+265829;particulier;dacia sandreo gpl;8400;3800;2009;DACIA;Sandero 1.4 MPI 75 GPL eco2;Lauréate;SANDERO;4020;1990;1534;5;5;13.0;6.5;153;0;5
+265836;particulier;fiat 500 pop 1,2 69 ch;10400;23657;2008;FIAT;500 1.2 8V 69 ch;Pop;500;3546;1627;1488;3;4;12.9;5.1;119;0;3
+265850;particulier;citroen saxo bic;3900;53000;2002;CITROEN;Saxo 1.1;Bic 2;SAXO;3718;1595;1370;5;5;14.9;6.1;145;0;2
+265852;particulier;polo confort 1.2;4500;112000;2003;VOLKSWAGEN;Polo 1.2 - 65;Confort +;POLO 2002-;3897;1650;1465;5;5;14.9;5.9;142;0;2
+265861;particulier;xsara vts superbe etat;3300;143000;2001;CITROEN;Xsara Coupé 2.0i 16V - 167;VTS;XSARA;4188;1705;1405;3;5;8.7;9.3;215;0;3
+265862;particulier;monospace citroen evasion turbo diesel;3600;215000;1999;CITROEN;Evasion 2.0i;X;EVASION;4454;1816;1714;5;5;15.1;10.6;252;0;5
+265869;professionnel;mini cooper clubman 120 cv;19200;21000;2009;MINI;Mini Clubman 1.6i - 120;Cooper Pack Chili +;MINI;3937;1683;1426;3;4;9.8;5.5;132;0;4
+265897;particulier;nissan primera 1.8 acenta pack gps 5p;8300;51500;2004;NISSAN;Primera Break 1.8i;Acenta Pack GPS;PRIMERA;4675;1760;1482;5;5;12.1;7.4;177;0;4
+265899;particulier;renault twingo;6800;63000;2007;RENAULT;Twingo II 1.2 eco2;Dynamique;TWINGO II;3600;1654;1470;3;4;15.0;5.6;132;0;2
+265904;professionnel;mini cooper d -110 cv;18900;18000;2009;MINI;Mini Clubman 1.6i - 120;John Cooper Works Pack Hot Spice +;MINI;3937;1683;1426;3;4;9.8;6.9;165;0;4
+265907;particulier;fiat punto cabriolet;3600;172000;1999;FIAT;Punto Cabriolet 60;;PUNTO;3760;1625;1446;2;4;15.0;7.1;159;0;5
+265919;particulier;107 trendy 5p;7500;9100;2008;PEUGEOT;107 1.0e 12V 68ch BLUE LION;Trendy;107;3430;1630;1470;5;4;13.7;4.5;106;0;6
+265925;particulier;citroen c2 1.6 hdi 110 vts noire;12500;28000;2008;CITROEN;C2 1.6i 16V;VTS;C2;3666;1659;1461;3;4;8.3;6.9;163;0;4
+265926;particulier;bmw x3;23500;62000;2006;BMW;X3 2.5si 218ch;Luxe;X3;4569;1853;1674;5;5;8.5;9.9;238;0;6
+265943;professionnel;bmw 325i coupé;29500;18950;2008;BMW;Coupé 325i xDrive 218ch;Confort;SERIE 3;4580;1782;1395;2;5;7.2;7.9;189;0;3
+265945;particulier;ford focus titanium tt option;16000;32000;2008;FORD;Focus SW 1.8 125 Flexifuel;Titanium;FOCUS II;4468;1839;1501;5;5;10.5;7.0;167;0;6
+265947;particulier;opel corsa opc 192ch;16250;21000;2008;OPEL;Corsa 1.6 - 192 Turbo;OPC;CORSA;4040;1737;1488;5;5;12.4;7.9;190;0;2
+265951;particulier;mercedes clk 270cdi ba;25000;47000;2005;MERCEDES;CLK Cabrio 200 K;Avantgarde;CLK-SERIES 209;4638;1740;1413;2;2;9.8;8.8;211;0;4
+265953;professionnel;peugeot 207 cc 1.6l hdi 110 roland garros 06-08;18990;17960;2008;PEUGEOT;207 CC 1.6 THP 16V 150ch;Roland Garros;207 CC;4030;1750;1470;2;4;8.6;7.2;171;0;3
+265966;particulier;206 pop art 2005 120000km;4500;120000;2005;PEUGEOT;206 SW 1.4i;Pop Art Clim;206;4028;1652;1460;5;5;15.2;6.6;162;0;1
+265995;particulier;peugeot 206 diesel;2900;188000;2001;PEUGEOT;206 1.6i 16V;XT;206;3835;1652;1432;5;5;11.7;7.0;171;0;1
+265998;particulier;citroen xsara;3000;205000;1998;CITROEN;Xsara Coupé 1.8i;X;XSARA;4354;1700;1420;5;5;14.6;7.9;170;0;6
+266005;particulier;mini clubman cooper;20000;9300;2008;MINI;Mini Clubman 1.6i - 120;Cooper;MINI;3937;1683;1426;3;4;9.8;5.5;132;0;3
+266035;professionnel;clio 3 rs phase 2;22500;5000;2009;RENAULT;Clio 1.2 16V 75 eco2;Rip Curl 2;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;3
+266044;particulier;audi tt quattro 180cv an 2000 86000km;14000;86000;2000;AUDI;TT 1.8T;Quattro;TT;4041;1856;1346;3;4;6.6;9.4;226;0;2
+266056;particulier;twingo ii;7700;50000;2007;RENAULT;Twingo II 1.2 eco2;Dynamique;TWINGO II;3600;1654;1470;3;4;15.0;5.6;132;0;1
+266072;particulier;terios luxury;15000;27000;2008;DAIHATSU;Terios 1.5 L;Luxury 100ème Anniversaire;TERIOS III;4055;1695;1740;5;5;0.0;8.1;191;0;6
+266082;particulier;alfa roméo 159 distinctive;23000;25000;2008;ALFA ROMEO;159 SW 1.9 JTS;Distinctive;159;4660;1828;1417;5;5;9.9;8.8;209;0;4
+266087;particulier;daewoo lanos 1.5 se;1500;120000;1998;DAEWOO;LANOS 1.5i;SX GPL;LANOS COMMERCIALE;4237;1678;1432;5;5;12.5;8.5;198;0;2
+266100;professionnel;peugeot 206 1.4 xs;4500;125000;2002;PEUGEOT;206 1.4i;XS;206;3835;1652;1432;5;5;13.4;6.6;162;0;5
+266101;particulier;porsche boxster 2007;36800;39000;2007;PORSCHE;Boxster 3.4i S 295 ch;;BOXSTER 987;4329;1801;1292;2;2;5.4;10.6;254;0;2
+266107;professionnel;406 2.0hdi st sport navtech;8000;102000;2003;PEUGEOT;406 Break 2.2e 16V;ST Pack Sport;406 II;4736;1765;1500;5;5;10.2;10.0;212;0;3
+266120;particulier;audi tt ftsi 2.0;25000;22000;2007;AUDI;TT Roadster 2.0 TFSI 200;S line;TT;4178;1842;1358;2;2;6.7;7.8;186;0;4
+266123;particulier;clio 3 - dci85 - 3 portes - personnel usine;13800;13000;2009;RENAULT;Clio TCE 100;Initiale;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;4
+266124;particulier;opel vectra;16000;49000;2007;OPEL;Vectra 2.8 V6 Turbo 280;OPC;VECTRA;4611;2036;1460;5;5;6.3;10.4;250;0;2
+266134;particulier;audi a3 cabriolet sline;29000;22000;2008;AUDI;A3 Cabriolet 1.6 102;Ambition Luxe;A3 II;4238;1765;1424;2;4;12.5;7.0;167;0;3
+266152;particulier;fiat multipla;3000;235000;2000;FIAT;MULTIPLA 100 16V;ELX;MULTIPLA;3994;1871;1695;5;3;12.6;8.6;205;0;2
+266159;particulier;alfa mito;19900;20000;2009;ALFA ROMEO;MiTo 1.4 T-Jet 155;Selective;MITO;4063;1721;1446;3;4;8.0;6.5;153;0;6
+266164;particulier;206 roland garros;6000;160000;2003;PEUGEOT;206 CC 2.0i 16V;Roland Garros;206;3835;1673;1373;2;4;8.9;8.0;191;0;4
+266166;particulier;bmw z4 roadster, hard top, accessoires hartge;23000;53000;2006;BMW;Z4 Roadster M 343;;Z4;4113;1781;1302;2;2;5.0;12.1;292;0;2
+266173;particulier;honda civic 1.8 rouge 21 000 kms;14700;21000;2007;HONDA;Civic 1.8 i-VTEC;Type S GT;CIVIC TYPE S;4275;1785;1460;3;5;8.9;6.6;156;0;5
+266179;professionnel;c2 1.4 pulp;7700;29000;2007;CITROEN;C2 1.4i;Pulp;C2;3666;1659;1461;3;4;12.2;6.0;143;0;4
+266180;particulier;twingo 2 noir authentique 1.2 lev 16v 75ch;8200;12400;2009;RENAULT;Twingo II 1.2 LEV 16v eco2;Authentique;TWINGO II;3600;1654;1470;3;4;12.3;5.1;114;0;2
+266198;particulier;xsara picasso année 2007;8000;88000;2007;CITROEN;Xsara Picasso 1.6i 16V 110;Génération 2007;XSARA;4276;1751;1637;5;5;11.4;7.3;172;0;3
+266200;particulier;406 break v6;5500;157000;2000;PEUGEOT;406 Break 3.0e V6;SV;406 II;4736;1760;1502;5;5;8.5;11.1;265;0;5
+266223;particulier;alfa romeo 146 junior;700;150000;1998;ALFA ROMEO;146 1.8i;TS L AGV;146;4260;1712;1430;5;5;11.5;8.4;187;0;1
+266230;professionnel;citroen c2;9990;40201;2007;CITROEN;C2 1.4i;Pack Ambiance;C2;3666;1659;1461;3;4;12.2;6.0;143;0;3
+266268;professionnel;opel astra 1.4l 16v confort;3950;117328;2000;OPEL;Astra 1.4i 16V;Comfort;ASTRA G;4110;1967;1425;3;5;12.5;7.2;173;0;2
+266277;particulier;opel corsa;12400;39000;2008;OPEL;Corsa 1.4 - 90 Twinport;In-Touch;CORSA;3999;1737;1488;5;5;12.4;6.1;146;0;2
+266285;particulier;mercedes e200 - 60.000 kms - an1999 - bva;6500;60190;1999;MERCEDES;E200;Elégance;E-SERIES 210;4795;1799;1436;4;5;11.3;9.1;215;0;5
+266299;particulier;audi s4 break;17000;70000;2000;AUDI;S4 Avant RS4;;S4;4525;1799;1386;5;5;4.9;12.0;288;0;3
+266307;particulier;bmw x3 luxe;24800;82000;2007;BMW;X3 2.5si 218ch;Luxe;X3;4569;1853;1674;5;5;8.5;9.9;238;0;6
+266328;professionnel;206disel 1.4 dhi 4cv blanche;6300;79229;2007;VOLKSWAGEN;Jazz 1.4 i-DSi;Trendy;JAZZ;4204;1759;1530;5;5;13.9;6.9;164;0;6
+266365;particulier;opel meriva 1.3tdi;12000;22000;2006;OPEL;Meriva 1.6i;Ecotec Enjoy;MERIVA;4042;1950;1624;5;5;13.3;7.3;175;0;5
+266367;particulier;alfa romeo 159 selective;17200;58000;2007;ALFA ROMEO;159 SW 2.2 JTS;Selective;159;4660;1828;1417;5;5;9.0;9.5;224;0;2
+266372;particulier;megane break;2400;220000;2000;RENAULT;Mégane Break 1.4i 16V;RTE;MEGANE BREAK;4437;1698;1420;5;5;14.3;7.1;168;0;3
+266385;particulier;peugeot 1007;8500;41000;2006;PEUGEOT;1007 1.6e 16v;Vitamine;1007;3731;1686;1610;3;5;14.4;6.9;163;0;1
+266403;particulier;fiat 500 abarth;17900;19100;2009;FIAT;500 1.2 8V 69 ch S&S;500;500;3546;1627;1488;3;4;12.9;5.1;119;0;2
+266407;professionnel;volkswagen - golf (978 brf 13);18900;7733;2008;VOLKSWAGEN;Golf 1.4 16S 80;Trendline;GOLF V;4204;1759;1479;3;5;13.9;6.9;164;0;1
+266418;professionnel;renault avantime;18000;95000;2003;RENAULT;Avantime 2.0T 16V;Privilège;AVANTIME;4642;2084;1627;3;4;9.9;9.2;218;0;2
+266433;particulier;207 feline;17000;21000;2008;PEUGEOT;207 CC 1.6 VTi 16V 120ch;Premium Pack;207 CC;4037;1750;1472;5;5;10.7;6.5;155;0;1
+266455;professionnel;citroen evasion 2.0 16v sx;4900;183605;2002;CITROEN;Evasion 2.0i 16V;SX;EVASION;4454;1818;1714;5;5;11.9;9.2;221;0;2
+266458;particulier;hyundai accent;2700;113664;2001;HYUNDAI;Accent 1.3i;GL Pack;ACCENT;4200;1670;1395;5;5;12.5;6.4;155;0;3
+266464;particulier;opel astra irmsher coupe;6500;157000;2002;OPEL;Astra Coupe 2.2i 16V;Bertone Pack;ASTRA G;4267;1709;1390;2;4;9.9;8.2;197;0;4
+266466;particulier;bora trendline;5900;190000;2002;VOLKSWAGEN;Bora V5;Carat 4Motion;BORA;4409;1735;1473;5;5;8.5;11.0;264;0;4
+266474;particulier;alfa romeo 147 distinctive;6000;76000;2004;ALFA ROMEO;147 2.0i TS;Distinctive;147;4170;1729;1442;5;5;9.3;8.9;211;0;4
+266477;particulier;scenic confort expression 1.6 16v 68500km;6500;68500;2004;RENAULT;Scenic 1.6 16V;Confort Expression;SCENIC II;4493;2087;1636;5;7;12.9;7.4;177;0;3
+266499;particulier;peugeot 206 automatique;5000;84583;2000;PEUGEOT;206 1.6i 16V;XT;206;3835;1652;1432;5;5;11.7;7.0;171;0;3
+266501;particulier;citroen xantia 1.8;2900;137375;2000;CITROEN;Xantia Break 1.8i 16V;Plaisir;XANTIA;4712;1755;1420;5;5;12.9;8.5;198;0;2
+266508;particulier;x-trail 2l2 vdi 2003;10000;125000;2003;NISSAN;X-Trail 2.0;Ultimate;X-TRAIL;4510;1765;1675;5;5;11.3;9.3;221;0;3
+266533;particulier;safrane turbo diesel 2l2;4800;212000;1998;RENAULT;Safrane 2.5i;RXT;SAFRANE;4768;1816;1435;5;5;9.1;10.3;244;0;1
+266546;particulier;ford focus pack titanium 115;17000;30000;2008;FORD;Focus 1.6 Ti-VCT 115;Titanium;FOCUS II;4337;1839;1500;3;5;10.8;6.6;157;0;2
+266548;particulier;seat altea xl;20000;18500;2008;SEAT;Altea XL 1.6i;Style;ALTEA XL;4467;1768;1581;5;5;13.0;7.8;187;0;1
+266555;particulier;bmw 320 ci;8500;109500;2001;BMW;Coupé 320 Ci;;3-SERIES E46;4488;1757;1372;2;5;8.8;9.4;225;0;2
+266581;particulier;406 break 7 places;3200;197000;2000;PEUGEOT;406 Break 2.0e 16V;ST (7pl);406 II;4736;1760;1502;5;7;12.7;8.8;207;0;2
+266586;professionnel;alfa romeo gt 2.0 jts distinctive gps;13990;58200;2006;ALFA ROMEO;GT 2.0 JTS;Veloce Distinctive;GT;4489;1763;1362;2;5;8.7;8.7;208;0;5
+266592;particulier;307 sw sport pack 1,6hdi 110cv;15400;33650;2007;PEUGEOT;307 SW 2.0e 16V 141ch;Sport Pack;307;4428;1762;1560;5;5;9.8;7.9;185;0;4
+266602;professionnel;porsche boxster 3.2s 252cv orig. france carnet;25900;93200;2002;PORSCHE;Boxster 3.2i S;;BOXSTER;4320;1780;1290;2;2;5.7;10.5;255;0;5
+266608;particulier;opel tigra linéa rossa;11800;61000;2007;OPEL;Tigra cab 1.8 16V - 125 Ecotec;Linea Rossa;TIGRA TWINTOP;3921;1685;1364;2;2;9.4;7.5;179;0;3
+266613;professionnel;fiat punto elx 60 3p;4590;69900;2002;FIAT;PUNTO 60;ELX;PUNTO COMMERCIALE;3835;1660;1486;5;5;14.3;5.7;136;0;2
+266632;particulier;renault scénic;3200;100000;1998;RENAULT;Mégane Scénic 1.6e;RTE GPL;MÉGANE SCÉNIC;4134;1719;1600;5;5;13.7;10.5;170;0;2
+266655;particulier;opel zafira bonne etat;11000;90000;2004;OPEL;Zafira 1.6 GNV;Disneyland;ZAFIRA;4317;1999;1684;5;7;14.8;8.1;145;0;4
+266663;particulier;406 coupé occasion;9300;150000;2003;PEUGEOT;406 Coupé 2.2 16V;Pack;406 COUPE;4615;1780;1352;2;4;9.7;8.8;210;0;2
+266667;particulier;renault grand scenic;9000;120000;2005;RENAULT;Grand Scenic 1.6 16v;Pack Expression;GRAND SCENIC;4493;2087;1636;5;7;12.9;7.4;177;0;6
+266674;particulier;206 cc 1.6 quicksylver;8300;58000;2004;PEUGEOT;206 CC 1.6i 16V;Quiksilver;206;3835;1673;1373;2;4;11.2;6.9;166;0;3
+266675;particulier;grand scenic;7300;160000;2004;RENAULT;Grand Scenic 1.6 16v;Pack Expression;GRAND SCENIC;4493;2087;1636;5;7;12.9;7.4;177;0;1
+267711;particulier;audi tt cab;25000;33870;2008;AUDI;TTS Coupé 2.0 TFSI 272;Quattro;TTS;4198;1842;1345;3;4;5.4;8.1;188;0;3
+266676;particulier;alfa 147 1.6 t spark 120 distinctive;5900;115000;2004;ALFA ROMEO;147 1.6i T.S. 120;Distinctive;147;4223;1729;1442;5;5;10.6;8.2;194;0;4
+266681;particulier;mini clubman bva;20000;28500;2008;MINI;Mini Clubman 1.6i - 120;Cooper;MINI;3937;1683;1426;3;4;9.8;5.5;132;0;6
+266691;particulier;peugeot 307 1,4l 16v 5 portes noir feux auto;5800;99800;2004;PEUGEOT;307 2.0i 16V;XT Premium;307;4202;1730;1510;5;5;9.8;7.9;188;0;3
+266699;particulier;peugeot 406 1.8 16v année 2000;2000;188000;2000;PEUGEOT;406 Break 1.8e 16V;ST (7pl);406 II;4736;1765;1502;5;7;12.7;8.8;207;0;3
+266713;particulier;urgent 307 1.6 16v 110cv;10900;53000;2005;PEUGEOT;307 1.6i 16V;X Line Clim;307;4202;1746;1510;3;5;11.6;7.2;169;0;5
+266741;professionnel;toyota aygo 5p vvti virgin radio;9700;8000;2009;TOYOTA;Aygo 1.0 VVT-i;Virgin Radio;AYGO;3415;1615;1465;5;4;0.0;4.5;106;0;4
+266746;particulier;307 1.6 16s xs premium;5500;127000;2002;PEUGEOT;307 1.6i 16V;XS Premium;307;4202;1730;1510;5;5;11.7;7.2;169;0;4
+266762;particulier;pneu 4 x 4;250;8000;2009;SAAB;9-3X 2.0T 210 XWD BioPower;;9-3X;4690;1802;1527;5;5;8.5;8.3;199;0;1
+266764;particulier;renautl twingo urgent;9500;18000;2009;RENAULT;Twingo II 1.2 eco2;Authentique;TWINGO II;3600;1654;1470;3;4;15.0;5.6;130;0;5
+266765;particulier;megane cc spor dynamique;10500;107500;2005;RENAULT;Mégane II CC 2.0 16V;Sport Dynamique;MEGANE CABRIOLET;4355;2026;1410;2;4;11.8;8.2;196;0;4
+266770;particulier;997 2s;65000;43000;2005;PORSCHE;911 Carrera S Coupé 3.8i;;911 TYPE 997;4427;1808;1310;2;2;4.8;11.5;277;0;4
+266780;particulier;alfa 159 distinctive 2006;10900;106000;2006;ALFA ROMEO;159 SW 1.9 JTS;Distinctive;159;4660;1828;1417;5;5;9.9;8.8;209;0;6
+266791;particulier;306 hdi xs;6000;154000;2000;PEUGEOT;306 2.0e 16V;XS;306;4030;1680;1333;3;5;10.4;9.1;219;0;4
+266794;particulier;twingo blanche;2300;104000;2001;RENAULT;Twingo 1.2i;Perrier;TWINGO;3433;1630;1423;3;4;13.7;5.8;138;0;1
+266797;particulier;superbe 306 s16 1l8 phase2;2250;100000;2000;PEUGEOT;306 2.0e 16V;S16 Premium;306;4030;1680;1333;3;5;8.8;9.4;224;0;3
+266803;particulier;chrysler crossfire 3.2 srt-6 moteur amg;21500;74000;2004;CHRYSLER;Crossfire Roadster 3.2 V6;Limited Premium;CROSSFIRE ROADSTER;4059;1766;1315;3;2;6.5;10.4;250;0;3
+266815;professionnel;fiat 500 1.2l 8v 69 ch lounge;11590;14800;2009;FIAT;500 1.2 8V 69 ch S&S;500;500;3546;1627;1488;3;4;12.9;5.1;119;0;2
+266820;particulier;mini cooper park lane;14000;64100;2006;MINI;Mini 1.6i - 170;Cooper S Park Lane;MINI;3655;1688;1416;3;4;9.1;8.6;207;0;3
+266824;particulier;renault clio 1.2 tce rip curl 2008;11800;16000;2008;RENAULT;Clio 1.2 16V 75 eco2;Rip Curl 2 Ethanol;CLIO III;3986;1707;1496;5;5;13.4;5.9;139;0;5
+266825;professionnel;fiat stilo 1.6 ess break;3700;118500;2002;FIAT;Stilo 1.6 16V;Dynamic;STILO;4182;1784;1475;3;5;10.5;7.3;173;0;3
+266834;particulier;peugeot 307 cc noire 1.6l sport pack;17000;28000;2008;PEUGEOT;307 CC 1.6e 16V 110ch;Sport;307 CC;4357;1759;1424;2;4;12.7;7.6;178;0;6
+266837;particulier;kia sportage 4x4 active;8000;95000;2005;KIA;Sportage 2.0;Active 4x4;SPORTAGE II;4350;1800;1695;5;5;11.3;8.2;194;0;4
+266845;particulier;fiat grande punto;6000;74800;2006;FIAT;Grande Punto 1.4 16V 95;Collezione;GRANDE PUNTO;4030;1687;1490;3;5;11.4;6.1;145;0;5
+266858;particulier;smart forfour ttes options;7500;67000;2005;SMART;Smart Forfour 1.5;Sportstyle;FORFOUR;3752;1684;1450;5;4;9.8;6.1;145;0;5
+266860;particulier;renault megane luxe privilège 120 ch hdi;10000;77000;2005;RENAULT;Mégane CC 1.6 16V;Luxe Privilège;MEGANE CABRIOLET;4355;2026;1410;2;4;11.8;6.9;164;0;4
+266867;particulier;modus;11500;32000;2007;RENAULT;Modus 1.2 16v 75 eco2;Authentique;MODUS;3792;1695;1589;5;5;13.5;6.0;140;0;2
+266869;particulier;peugeot 307;4800;140000;2003;PEUGEOT;307 2.0i 16V;XT Premium;307;4202;1730;1510;5;5;15.7;7.9;188;0;4
+266874;particulier;citroen c1 essence;6600;26000;2008;CITROEN;C1 1.0i Airdream;Attraction;C1;3435;1630;1465;5;4;13.7;4.5;106;0;2
+266902;particulier;audi tt roadster;25000;13000;2008;AUDI;TT Roadster 2.0 TFSI 200;S line;TT;4178;1842;1358;2;2;6.7;7.8;186;0;4
+266909;professionnel;peugeot 308 vti 120cv;13360;18900;2008;PEUGEOT;308 1.6 VTi 120ch;Premium;308;4276;1815;1498;3;5;12.7;6.7;159;0;6
+266920;particulier;peugeot 406 coupe v6;8700;157000;1999;PEUGEOT;406 Coupé 3.0i V6;;406 COUPE;4615;1780;1354;2;4;7.9;10.9;260;0;2
+266973;professionnel;nissan qashqai acenta 2,0dci;20300;15300;2008;NISSAN;QASHQAI ENTREPRISE 2.0 140;ACENTA;QASHQAI ENTREPRISE;4315;1783;1606;5;2;10.1;8.1;192;0;3
+266985;particulier;grand c4 picasso;24000;19000;2009;CITROEN;Grand C4 Picasso VTi 120;Pack;C4;4590;1830;1680;5;7;12.4;7.4;174;0;4
+266989;particulier;peugeot 207 16 v 1.6 thp 150 ch 3 portes;10000;18300;2007;PEUGEOT;207 CC 1.6 THP 16V 150ch;Sport Pack;207 CC;4030;1750;1472;5;5;8.6;7.2;171;0;3
+267004;particulier;opel corsa iv gris métalisé diesel excellent état;10000;15500;2009;OPEL;Corsa 1.4 - 90 Twinport;In-Touch;CORSA;3999;1737;1488;5;5;12.4;7.8;146;0;5
+267032;particulier;opel zafira 113000 km;6300;115000;2001;OPEL;Zafira 2.2i 16V;Elégance Pack Exécutive;ZAFIRA;4317;1999;1684;5;7;10.0;8.9;214;0;5
+267058;particulier;opel corsa cosmo;9900;16000;2007;OPEL;Corsa 1.2 Twinport;Cosmo;CORSA;3999;1737;1488;5;5;13.9;6.1;146;0;2
+267068;particulier;peugeot 206 bva an/2001 80000km 3800;3800;80000;2001;PEUGEOT;206 1.6i 16V;XT;206;3835;1652;1432;5;5;11.7;7.0;171;0;2
+267088;particulier;peugeot 206 s16;4800;103400;2001;PEUGEOT;206 2.0e 16V;S16;206;3835;1652;1432;3;5;8.4;7.9;187;0;4
+267094;particulier;peugeot 308 etat neuf;15500;30000;2008;PEUGEOT;308 1.6 VTi 120ch;Premium;308;4276;1815;1498;3;5;12.7;6.7;159;0;1
+267125;particulier;twingo kenzo 46000 km ess 5cv;5000;46000;2004;RENAULT;Twingo 1.2 16v;Kenzo;TWINGO;3433;1630;1423;3;4;13.7;5.8;138;0;5
+267128;particulier;hyundai getz;5900;57000;2005;HYUNDAI;Getz 1.3;Pack Confort;GETZ;3810;1665;1490;5;5;11.5;6.2;150;0;4
+267134;particulier;peugeot 206 cc;5500;110000;2001;PEUGEOT;206 CC 2.0i 16V;;206;3835;1673;1373;2;4;8.9;8.0;191;0;2
+267136;particulier;peugeot coupé 407 2.2 l 16v 2007;15000;33000;2007;PEUGEOT;407 Coupé 2.2e 16V 163ch;Sport Pack;407 COUPE;4815;1868;1400;2;4;9.2;9.2;219;0;2
+267148;professionnel;206 cc noire;5750;138000;2003;PEUGEOT;206 CC 2.0i 16V;Roland Garros;206;3835;1673;1373;2;4;8.9;8.0;191;0;2
+267158;professionnel;mini 1.6 cooper s 170 ch ref 7312;13380;64123;2004;MINI;Mini 1.6i - 170;Cooper S;MINI;3655;1688;1416;3;4;7.2;8.6;207;0;2
+267184;particulier;406 peugeot;4000;156000;2000;PEUGEOT;406 Break 1.8e 16V;ST (7pl);406 II;4736;1760;1502;5;7;12.7;8.8;207;0;5
+267206;particulier;peugeot 307 sw;7000;164000;2005;PEUGEOT;307 SW 2.0 16V;Navteq on Board;307;4419;1757;1544;5;5;9.8;7.9;188;0;6
+267213;particulier;206 cc grise 1.6l 7ch de 2002;5600;157000;2002;PEUGEOT;206 CC 1.6i 16V;;206;3835;1673;1373;2;4;11.2;6.9;166;0;4
+267215;particulier;mercedes clk200 kompressor;9800;130000;2001;MERCEDES;C230 Kompressor;Optimum Sport;C-SERIES 202;4516;1723;1427;4;5;8.4;9.8;233;0;3
+267218;particulier;fiat palio;3600;93000;2000;FIAT;Palio Week End 75;Estivale;PALIO;4130;1626;1515;5;5;13.2;8.2;197;0;2
+267232;particulier;volkswagen lupo;2300;122345;2001;VOLKSWAGEN;Lupo 1.4i 16V;Carat;LUPO;3527;1639;1460;3;5;12.0;6.2;149;0;2
+267235;particulier;renault laguna break;7000;58000;2003;RENAULT;Laguna Break 1.8i 16V;Dynamique;LAGUNA II;4695;1772;1443;5;5;11.7;7.7;184;0;3
+267251;particulier;megane coupe;3500;140000;2000;RENAULT;Mégane Coupé 1.6i 16V;RSI Pack Clim;MEGANE COUPE;3987;1698;1366;2;4;11.4;6.9;162;0;2
+267280;particulier;406 coupe v6 leger choc avant gris clair;6000;155000;1998;PEUGEOT;406 Coupé 3.0i V6;;406 COUPE;4615;1780;1354;2;4;7.9;10.9;260;0;5
+267281;particulier;207 1.4 75ch;9800;18500;2008;PEUGEOT;207 1.4e 75ch;Urban;207;4030;1720;1472;3;5;13.9;6.3;150;0;5
+267298;particulier;mini clubman cooper;20000;9300;2008;MINI;Mini Clubman 1.6i - 120;Cooper;MINI;3937;1683;1426;3;4;9.8;5.5;132;0;4
+267322;particulier;safrane 2.2td;1700;270000;1998;RENAULT;Safrane 2.5i;RXT;SAFRANE;4768;1816;1435;5;5;9.1;10.3;244;0;4
+267326;particulier;porsche boxster 3.2 s;30000;58000;2003;PORSCHE;Boxster 3.2i S;;BOXSTER;4320;1780;1290;2;2;5.7;10.5;255;0;5
+267331;particulier;alfa romeo 166 2l4 175ch selective;8000;134000;2004;ALFA ROMEO;166 3.2 V6;Distinctive;166;4720;1800;1416;4;5;7.4;12.5;297;0;6
+267351;particulier;citroën c2;6800;80000;2004;CITROEN;C2 1.4i;Pack Ambiance;C2;3666;1659;1461;3;4;12.2;6.0;143;0;2
+267356;particulier;voiture peugeot 307 sw;9000;162000;2005;PEUGEOT;307 SW 2.0 16V;Navteq on Board;307;4419;1757;1544;5;5;9.8;7.9;188;0;3
+267361;particulier;peugeot 206 trendy 1.4;8900;48000;2006;PEUGEOT;206 SW 1.4e;Trendy;206;4028;1652;1460;5;5;14.7;6.4;154;0;3
+267363;particulier;scénic rxe 1l6 16v;4200;69000;2000;RENAULT;Scénic 1.6i 16V;RXE Pack Clim;MÉGANE SCÉNIC;4169;1698;1675;5;5;12.9;7.3;173;0;3
+267379;particulier;1007 sporty ii-tronic 1l6;8300;24000;2006;PEUGEOT;1007 1.6e 16V 110ch;Sporty Pack;1007;3731;1826;1620;3;5;11.1;6.9;163;0;6
+267388;particulier;207 trendy 90ch;11000;21000;2007;PEUGEOT;207 1.4e 16v 90ch;Trendy;207;4030;1720;1472;5;5;12.7;6.4;152;0;4
+267394;particulier;opel zafira;12000;70000;2002;OPEL;Zafira 2.2i 16V;Elégance Pack Exécutive;ZAFIRA;4317;1999;1684;5;7;10.0;8.9;214;0;3
+267399;particulier;citroen xsara;500;217000;1998;CITROEN;Xsara Coupé 1.8i;X;XSARA;4354;1700;1420;5;5;14.6;7.9;170;0;2
+267401;particulier;fiat palio weekend;1800;82000;2000;FIAT;Palio Week End 75;Estivale;PALIO;4130;1626;1515;5;5;13.2;8.2;197;0;6
+267409;particulier;opel meriva;6000;100000;2005;OPEL;Meriva 1.6i;Ecotec Enjoy;MERIVA;4042;1950;1624;5;5;13.3;7.3;175;0;3
+267417;particulier;scénic 1.6 16v expression;4500;120000;2002;RENAULT;Scénic 1.6i 16V;Expression GPL;MÉGANE SCÉNIC;4168;1719;1609;5;5;12.2;9.6;173;0;2
+267428;particulier;mitsubishi pagero pinin;7500;70000;2001;MITSUBISHI;Pajero Pinin long 1.8;Comfort Columbia;PAJERO PININ;4035;1695;1695;5;5;12.6;9.5;225;0;5
+267431;particulier;saxo 2 an 2001 tbeg ct.ok. 4cv. revision ok;2400;107000;2001;CITROEN;Saxo 1.6;New Morning 2;SAXO;3718;1595;1389;5;5;14.9;6.7;159;0;3
+\.
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+
