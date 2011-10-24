@@ -6,7 +6,7 @@ Equipe IRISA/PILGRIM (http://www.irisa.fr/pilgrim/home_html)
 Contributions scientifiques :
   Olivier Pivert (olivier.pivert AT irisa.fr)
 
-Supervision du projet
+Supervision du projet :
   Gregory Smits (gregory.smits AT irisa.fr)
 
 Auteur du code source :
@@ -54,7 +54,7 @@ ORDER BY mu DESC LIMIT 15;
 --Véhicules récents, bons marchés et ayant un kilométrage faible.
 SELECT DISTINCT make, name, model, price, mileage, year, get_mu() as mu
 FROM annoncesauto
-WHERE (price ~= 'very cheap') && (mileage ~= 'low')
+WHERE (price ~= 'very cheap') && (mileage ~= 'low') && (age ~= 'recent')
 ORDER BY mu DESC LIMIT 15;
 
 
@@ -103,7 +103,7 @@ CREATE OPERATOR ~ (LEFTARG = mileage, RIGHTARG = mileage, PROCEDURE = distance);
 -- Véhicules dont le kilométrage avoisine 98000 kms.
 SELECT DISTINCT make, name, model, price, mileage, year, get_mu() as mu
 FROM annoncesauto
-WHERE mileage::mileage ~ 98000
+WHERE mileage::mileage ~ 98000::mileage
 ORDER BY mu DESC LIMIT 15;
 
 
