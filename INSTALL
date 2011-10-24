@@ -29,11 +29,11 @@ L'extension fait usage de fonctions écrites dans les langages PL/PgSQL et PL/Py
   createlang plpythonu <dbname>
 
 Il d'abord faut décompresser l'archive téléchargée :
-  $ tar xzf sqlf--x.y/
+  $ tar xzf postgresqlf.tar.gz
 
 La construction de l'extension nécessite ensuite une étape de compilation :
 
-  $ cd sqlf--x.y/
+  $ cd postgresqlf
   $ make
 
     cat sql/sqlf_predicates.sql sql/sqlf_settings.sql sql/sqlf_operators.sql sql/sqlf_conversion.sql sql/sqlf_quantifiers.sql sql/sqlf_gradual.sql > sqlf--1.0.sql
@@ -42,7 +42,7 @@ La construction de l'extension nécessite ensuite une étape de compilation :
     rm sqlf.o
 
 L'extension doit ensuite être installée en copiant la libraire compilée (sqlf.so), et les fichier sqlf--x.y.sql et sqlf.control :
-
+  $ su
   # make install
 
   /bin/mkdir -p '/usr/share/postgresql/extension'
@@ -54,7 +54,7 @@ L'extension doit ensuite être installée en copiant la libraire compilée (sqlf
 
 L'instruction 'CREATE EXTENSION sqlf;' permet de charger l'extension sqlf lors d'une connexion à une base de données :
 
-  $ su postgre
+  $ su postgres
   $ psql <dbname> -f 'CREATE EXTENSION sqlf;'
 
 Cette commande va charger la librairie sqlf.so ainsi que l'ensemble du fichier sqlf--x.y.sql.
@@ -66,5 +66,5 @@ Désinstallation
 
 Pour supprimer l'extension et ses fonctions d'une base de données, on peut faitre appel au script de desinstallation sqlf_uninstall.sql :
 
-  psql -f sql/sqlf_uninstall.sql <dbname>
+  psql -f sqlf_uninstall.sql <dbname>
 
