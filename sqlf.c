@@ -11,10 +11,12 @@
 
 Datum set_norm(PG_FUNCTION_ARGS)
 {
+    const char * n;
+
     if( PG_ARGISNULL(0)){
       PG_RETURN_NULL();
     } 
-    const char * n = text_to_cstring(PG_GETARG_TEXT_P(0));
+    n = text_to_cstring(PG_GETARG_TEXT_P(0));
    
     if (strcmp (n, "zadeh") == 0)
       NORM = ZADEH;
@@ -25,7 +27,7 @@ Datum set_norm(PG_FUNCTION_ARGS)
     else if (strcmp (n, "weber") == 0)
       NORM = WEBER;
     PG_RETURN_TEXT_P(cstring_to_text(n));
-}	
+}    
 
 
 Datum get_norm(PG_FUNCTION_ARGS)
@@ -52,11 +54,12 @@ Datum get_norm(PG_FUNCTION_ARGS)
 
 Datum set_quantifier(PG_FUNCTION_ARGS)
 {
+  const char * q;
   if( PG_ARGISNULL(0)){
     PG_RETURN_NULL();
   }
   
-  const char * q = text_to_cstring(PG_GETARG_TEXT_P(0));
+  q = text_to_cstring(PG_GETARG_TEXT_P(0));
   
   if (strcmp (q, "zadeh") == 0)
     QUANTIFIER = ZADEH;
