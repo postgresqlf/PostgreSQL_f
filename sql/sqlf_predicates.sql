@@ -1,6 +1,5 @@
 -- sqlf_predicates.sql
 
-
 /*
 Prise en compte de l'intégration de prédicats flous en format dans la clause WHERE de la requête. 
 ex. : SELECT * FROM employe WHERE jeune(age);
@@ -34,7 +33,7 @@ Ainsi les requêtes suivantes sont équivalentes :
 - SELECT * FROM employes WHERE tres(jeune(age));
 */
 
-CREATE OR REPLACE FUNCTION ISf(att FLOAT, funcs VARCHAR) RETURNS FLOAT AS $$ 
+CREATE OR REPLACE FUNCTION ISf(att NUMERIC, funcs VARCHAR) RETURNS FLOAT AS $$ 
   DECLARE
     tokens text[];
     len int;
@@ -61,6 +60,32 @@ CREATE OR REPLACE FUNCTION ISf(att FLOAT, funcs VARCHAR) RETURNS FLOAT AS $$
   END
 $$ LANGUAGE 'plpgsql' IMMUTABLE;
 
+CREATE OR REPLACE FUNCTION ISf(att VARCHAR, funcs VARCHAR) RETURNS FLOAT AS $$ 
+  DECLARE
+    tokens text[];
+    len int;
+    a record;
+    sql text;
+  BEGIN
+    len = 0;
+    -- tokenisation de la chaine 'funcs'
+    tokens := string_to_array($2, ' ');
+    sql := 'SELECT ';
+    
+    -- construction du prédicat avec chaque token.
+    FOR i IN 1..array_upper(tokens, 1) LOOP
+     sql := sql  || tokens[i] || '(''';
+     len := len +1 ;
+    END LOOP;
+    -- ajout de l'attribut et des parenthèses manquantes.
+    sql := sql || att || '''' || repeat(')', len) || ' as val' ;
+    --RAISE NOTICE '%', sql;
+    -- évaluation de la chaîne sql
+    FOR a IN EXECUTE sql LOOP
+     return a.val;
+    END LOOP;
+  END
+$$ LANGUAGE 'plpgsql' IMMUTABLE;
 
 
 
@@ -83,7 +108,9 @@ Il permet de réaliser les conversions suivantes :
 On peut ainsi executer la requête suivante :
     SELECT * FROM employes WHERE age ~= 'tres jeune'; 
 */
-CREATE OPERATOR ~= (LEFTARG = FLOAT, RIGHTARG = VARCHAR, PROCEDURE = isF);
+CREATE OPERATOR ~= (LEFTARG = NUMERIC, RIGHTARG = VARCHAR, PROCEDURE = isF);
+CREATE OPERATOR ~= (LEFTARG = VARCHAR, RIGHTARG = VARCHAR, PROCEDURE = isF);
+
 
 CREATE OR REPLACE FUNCTION very(x FLOAT)
 RETURNS FLOAT LANGUAGE SQL IMMUTABLE AS $$SELECT $1 * $1;$$;
@@ -182,11 +209,37 @@ output TEXT;
 BEGIN
 output:= 'CREATE OR REPLACE FUNCTION ' || func_name || '(val FLOAT) RETURNS FLOAT AS ''
 	  SELECT trapezoidal_fuzzy_predicate($1, '||support1||','||core1||',' ||core2||',' ||support2||');''
-	  LANGUAGE SQL;';
+	  LANGUAGE SQL IMMUTABLE;';
 EXECUTE output;
 RETURN;
 END;
 $$;
 
 
+CREATE OR REPLACE FUNCTION create_restricted_predicate(func_name TEXT, argtype TEXT, support1 FLOAT, core1 FLOAT, core2 FLOAT, support2 FLOAT)
+RETURNS VOID
+LANGUAGE plpgsql
+AS $$
+DECLARE
+output TEXT;
+BEGIN
+output:= 'CREATE OR REPLACE FUNCTION ' || func_name || '(' || argtype ||'%TYPE) RETURNS FLOAT AS ''
+    SELECT trapezoidal_fuzzy_predicate($1::FLOAT, '||support1||','||core1||',' ||core2||',' ||support2||');''
+    LANGUAGE SQL IMMUTABLE;';
+EXECUTE output;
+RETURN;
+END;
+$$;
 
+
+CREATE OR REPLACE FUNCTION create_categorial_predicate(func_name TEXT, dico TEXT)
+RETURNS VOID
+LANGUAGE plpgsql
+AS $BODY$
+BEGIN
+EXECUTE 'CREATE OR REPLACE FUNCTION ' || func_name || '(cat TEXT) RETURNS FLOAT AS $$
+       SELECT ('||quote_literal(dico)||'::hstore -> $1)::FLOAT;
+       $$ LANGUAGE SQL IMMUTABLE;';
+RETURN;
+END;
+$BODY$;
